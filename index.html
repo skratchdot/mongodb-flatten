@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>MongoDB - flatten.js by skratchdot</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>MongoDB - flatten.js</h1>
+        <h2>The flatten() function is a mapReduce that flattens documents into key/value pairs.</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/skratchdot/mongodb-flatten/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/skratchdot/mongodb-flatten/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/skratchdot/mongodb-flatten" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>MongoDB - flatten.js</h1>
+
+<p><a href="http://skratchdot.github.com/mongodb-flatten/">Project Page</a><br><a href="https://github.com/skratchdot/mongodb-flatten/">Source Code</a><br><a href="https://github.com/skratchdot/mongodb-flatten/issues/">Issues</a>  </p>
+
+<h2>Description:</h2>
+
+<p>The flatten() function is a mapReduce that flattens documents into
+key/value pairs.  Since this is a mapReduce, you can access the 
+keys via 'value.data.k' and the values via 'value.data.v'.</p>
+
+<h2>Usage:</h2>
+
+<pre><code>// Flatten all user documents, and return the result inline.
+result = db.users.flatten();
+
+// Flatten all user documents, and store the result in the users_flattened collection
+result = db.users.flatten('users_flattened');
+
+// Flatten user documents that have the first name of Bob. Store in a collection
+db.users.flatten({
+    'out' : 'users_flattened',
+    'query' : { 'name.first' : 'Bob' }
+});
+
+// Get the number of keys in one document
+db.users.flatten({
+    query : { '_id' : ObjectId('4f9c2374992274fc8d468675') }
+}).results[0].value.data.length;
+</code></pre>
+
+<h2>Installation:</h2>
+
+<p>Download: <a href="https://github.com/skratchdot/mongodb-flatten/raw/master/flatten.js">flatten.js</a></p>
+
+<h3>Option 1</h3>
+
+<p>Add this script to your .mongorc.js file.  </p>
+
+<p>See: <a href="http://www.mongodb.org/display/DOCS/Overview+-+The+MongoDB+Interactive+Shell#Overview-TheMongoDBInteractiveShell-.mongorc.js">http://www.mongodb.org/display/DOCS/Overview+-+The+MongoDB+Interactive+Shell#Overview-TheMongoDBInteractiveShell-.mongorc.js</a></p>
+
+<h3>Option 2</h3>
+
+<p>Start the shell after executing this script  </p>
+
+<pre><code>mongo --shell flatten.js
+</code></pre>
+      </section>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-10768188-3");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
