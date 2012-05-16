@@ -1,6 +1,6 @@
 # MongoDB - flatten.js #
 
-[Project Page](http://skratchdot.github.com/mongodb-flatten/)  
+[Project Page](http://skratchdot.com/projects/mongodb-flatten/)  
 [Source Code](https://github.com/skratchdot/mongodb-flatten/)  
 [Issues](https://github.com/skratchdot/mongodb-flatten/issues/)  
 
@@ -37,7 +37,7 @@ Download: [flatten.js](https://github.com/skratchdot/mongodb-flatten/raw/master/
 
 Add this script to your .mongorc.js file.  
 
-See: http://www.mongodb.org/display/DOCS/Overview+-+The+MongoDB+Interactive+Shell#Overview-TheMongoDBInteractiveShell-.mongorc.js
+See: [http://www.mongodb.org/display/DOCS/Overview+-+The+MongoDB+Interactive+Shell#Overview-TheMongoDBInteractiveShell-.mongorc.js](http://www.mongodb.org/display/DOCS/Overview+-+The+MongoDB+Interactive+Shell#Overview-TheMongoDBInteractiveShell-.mongorc.js)
 
 ### Option 2 ###
 
