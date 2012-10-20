@@ -6,28 +6,32 @@
 
 ## Description: ##
 
-The flatten() function is a mapReduce that flattens documents into
-key/value pairs.  Since this is a mapReduce, you can access the 
-keys via 'value.data.k' and the values via 'value.data.v'.
+This project provides a way to flatten documents into id/key/value
+pairs. The flatten() function accepts a collectionName parameter.
+This collection will be emptied, and the newly flattened data will
+be stored there. If a collectionName is not passed, then a temporary
+collection will be created with a name in the format: temp.flatten_TIMESTAMP.
 
 ## Usage: ##
 
-	// Flatten all user documents, and return the result inline.
-	result = db.users.flatten();
-	
-	// Flatten all user documents, and store the result in the users_flattened collection
-	result = db.users.flatten('users_flattened');
-	
-	// Flatten user documents that have the first name of Bob. Store in a collection
-	db.users.flatten({
-		'out' : 'users_flattened',
-		'query' : { 'name.first' : 'Bob' }
-	});
-	
-	// Get the number of keys in one document
-	db.users.flatten({
-		query : { '_id' : ObjectId('4f9c2374992274fc8d468675') }
-	}).results[0].value.data.length;
+```javascript
+// Flatten all user documents, and store the results in: temp.flatten_TIMESTAMP
+result = db.users.flatten();
+
+// Flatten all user documents, and store the result in the users_flattened collection
+result = db.users.flatten('users_flattened');
+
+// Flatten user documents that have the first name of Bob. Store in a collection
+result = db.users.find({ 'name.first' : 'Bob' }).flatten('users_flattened');
+
+// Flatten the first 20 user documents into a dynamically named collection
+result = db.users.find().limit(20).flatten();
+
+// Get the number of keys in one document
+db.users.find({
+	'_id' : ObjectId('4f9c2374992274fc8d468675')
+}).flatten().count();
+```
 
 ## Installation: ##
 
